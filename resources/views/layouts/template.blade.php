@@ -57,17 +57,17 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="text-white d-none d-lg-inline large">
-                                    {{-- @if (Auth::check())
-                                    Halo, {{ Auth::user()->name }}
-                                    @endif --}}
+                                    @if (Auth::check())
+                                        Halo, {{ Auth::user()->name }}
+                                    @endif
                                 </span>
                             </a>
                             <div class="shadow dropdown-menu dropdown-menu-right animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <span class="ml-4 text-gray d-none d-lg-inline small">
-                                    {{-- @if (Auth::check())
-                                    {{ Auth::user()->name }}
-                                    @endif --}}
+                                    @if (Auth::check())
+                                        {{ Auth::user()->name }}
+                                    @endif
                                 </span>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal"
@@ -115,14 +115,16 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-primary"
                                         data-dismiss="modal">Cancel</button>
-                                    <a class="btn btn-danger" href="" onclick="event.preventDefault();
+                                    <a class="btn btn-danger" href=""
+                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
 
-                                    <form id="logout-form" action="" method="POST"
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         style="display: none;">
                                         @csrf
+                                        @method('POST')
                                     </form>
                                 </div>
                             </div>
@@ -137,7 +139,7 @@
                     <div class="my-auto text-center copyright">
                         <span>copyright &copy; Alfaby -
                             <script>
-                            document.write(new Date().getFullYear());
+                                document.write(new Date().getFullYear());
                             </script>
                         </span>
                     </div>
@@ -176,10 +178,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script>
-    $("#id_pasien").select2({
-        placeholder: "Select a programming language",
-        allowClear: true
-    });
+        $("#id_pasien").select2({
+            placeholder: "Select a programming language",
+            allowClear: true
+        });
     </script>
 </body>
 
