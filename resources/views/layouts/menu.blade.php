@@ -11,35 +11,36 @@
         Rekam Medis
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
+            aria-expanded="true" aria-controls="collapseBootstrap">
             <i class="fas fa-book-medical"></i>
             <span>Rekam Medis</span>
         </a>
-        {{-- <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap"
+        <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Rekam Medis</h6>
                 <a class="collapse-item" href="/rekam-medis">Rekam Medis</a>
                 <h6 class="collapse-header">Pasien</h6>
+                <a class="collapse-item" href="/rawat-sementara">Rawat Sementara</a>
                 <a class="collapse-item" href="/rawat">Rawat</a>
-                <a class="collapse-item" href="/rawat-jalan">Rawat Jalan</a>
                 <a class="collapse-item" href="/dirujuk">Dirujuk</a>
                 <a class="collapse-item" href="/sembuh">Sembuh</a>
             </div>
-        </div> --}}
+        </div>
     </li>
     <br>
     <div class="sidebar-heading">
         Menu
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="/data-sakit">
+        <a class="nav-link" href="/pasien">
             <i class="fas fa-notes-medical"></i>
             <span>Data Pasien</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/pasien">
+        <a class="nav-link" href="/siswa">
             <i class="fas fa-user"></i>
             <span>Data Siswa</span>
         </a>
