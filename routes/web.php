@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RayonController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\RombelController;
+use App\Http\Controllers\PetugasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/', function () {
 Route::resource('/rayon', RayonController::class);
 Route::resource('/obat', ObatController::class);
 Route::resource('/rombel', RombelController::class);
+Route::resource('/petugas', PetugasController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
