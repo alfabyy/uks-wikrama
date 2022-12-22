@@ -25,9 +25,9 @@ use App\Http\Controllers\PetugasController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::resource('/rayon', RayonController::class);
 Route::resource('/obat', ObatController::class);
@@ -41,3 +41,5 @@ Route::resource('/petugas', PetugasController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
