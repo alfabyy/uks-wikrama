@@ -4,10 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RayonController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\RombelController;
+
+use Illuminate\Support\Facades\Auth;
+
+
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PasienController;
 
 use App\Http\Controllers\PetugasController;
+
 
 /*
 |--------------------------------------------------------------------------
