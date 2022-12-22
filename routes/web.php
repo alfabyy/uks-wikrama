@@ -30,7 +30,7 @@ Route::resource('/rombel', RombelController::class);
 
 Route::resource('/siswa', SiswaController::class);
 Route::resource('/pasien', PasienController::class);
-=======
+
 Route::resource('/petugas', PetugasController::class);
 
 Auth::routes();
