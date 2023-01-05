@@ -12,10 +12,15 @@ class Rayon extends Model
     protected $table = 'rayon';
     protected $guarded = [];
 
-    // public function pasien()
-    // {
-    //     return $this->hasMany(Pasien::class);
-    // }
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class);
+    }
+
+    public function pasien()
+    {
+        return $this->hasMany(Pasien::class);
+    }
 
     // public function medical_check_up()
     // {
