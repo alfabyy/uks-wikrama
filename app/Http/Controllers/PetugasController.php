@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Petugas;
+use App\Models\Rayon;
+use App\Models\Rombel;
 
 class PetugasController extends Controller
 {
@@ -18,7 +20,9 @@ class PetugasController extends Controller
         //     abort(403);
         // }
         $petugas = Petugas::paginate(10);
-        return view('petugas.index', compact('petugas'));
+        $rayon = Rayon::all();
+        $rombel = Rombel::all();
+        return view('petugas.index', compact('petugas', 'rayon', 'rombel'));
     }
 
     /**
@@ -68,7 +72,9 @@ class PetugasController extends Controller
         //     abort(403);
         // }
         $petugas = Petugas::find($id);
-        return view('petugas.edit', compact('petugas'));
+        $rayon = Rayon::all();
+        $rombel = Rombel::all();
+        return view('petugas.edit', compact('petugas', 'rayon', 'rombel'));
     }
 
     /**
