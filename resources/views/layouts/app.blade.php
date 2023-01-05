@@ -13,7 +13,7 @@
     <!-- Scripts -->
     <script src="{{ asset('dist/js/app.js') }}" defer></script>
 
-    <link href="{{asset('dist/img/logo/logo4.png')}}" rel="icon">
+    <link href="{{ asset('dist/img/logo/logo4.png') }}" rel="icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,8 +23,10 @@
     <!-- Styles -->
     <link href="{{ asset('dist/css/app.css') }}" rel="stylesheet">
 
-    <link href="https://indrijunanda.github.io/RuangAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://indrijunanda.github.io/RuangAdmin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://indrijunanda.github.io/RuangAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+        type="text/css">
+    <link href="https://indrijunanda.github.io/RuangAdmin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+        type="text/css">
     <link href="https://indrijunanda.github.io/RuangAdmin/css/ruang-admin.min.css" rel="stylesheet">
 </head>
 @include('sweetalert::alert')
@@ -43,4 +45,8 @@
     <script src="https://indrijunanda.github.io/RuangAdmin/js/ruang-admin.min.js"></script>
 </body>
 
+
 </html>
+
+</html>
+

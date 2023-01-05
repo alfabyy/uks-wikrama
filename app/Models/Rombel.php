@@ -12,4 +12,15 @@ class Rombel extends Model
     protected $table = 'rombel';
     protected $guarded = [];
 
+    
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class);
+    }
+
+    public function pasien()
+    {
+        return $this->hasMany(Pasien::class);
+    }
+
 }
