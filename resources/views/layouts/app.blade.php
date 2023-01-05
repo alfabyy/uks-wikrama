@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,8 +16,9 @@
     <link href="{{asset('dist/img/logo/logo4.png')}}" rel="icon">
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('dist/css/app.css') }}" rel="stylesheet">
@@ -26,6 +28,7 @@
     <link href="https://indrijunanda.github.io/RuangAdmin/css/ruang-admin.min.css" rel="stylesheet">
 </head>
 @include('sweetalert::alert')
+
 <body>
     <div id="app">
 
@@ -39,4 +42,5 @@
     <script src="https://indrijunanda.github.io/RuangAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="https://indrijunanda.github.io/RuangAdmin/js/ruang-admin.min.js"></script>
 </body>
+
 </html>
