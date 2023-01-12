@@ -8,7 +8,7 @@ use App\Models\Rombel;
 
 class RombelController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -42,6 +42,8 @@ class RombelController extends Controller
     {
         $input = $request->all();
         Rombel::create($input);
+        Alert::success('Congrats', 'You\'ve Successfully Created');
+
         return redirect('/rombel');
     }
 
@@ -67,8 +69,8 @@ class RombelController extends Controller
         // if(auth()->user()->role == 'visitor'){
         //     abort(403);
         // }
-        $rombel = Rombel::find($id);
-        return view('rombel.edit', compact('rombel'));
+        // $rombel = Rombel::find($id);
+        // return view('rombel.edit', compact('rombel'));
     }
 
     /**
@@ -97,6 +99,7 @@ class RombelController extends Controller
     {
         $rombel = Rombel::find($id);
         $rombel->delete();
+        alert()->success('Succes', 'Successfully Deleted');
         return back();
     }
 }
