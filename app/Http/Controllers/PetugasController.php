@@ -45,7 +45,7 @@ class PetugasController extends Controller
     {
         $input = $request->all();
         Petugas::create($input);
-        alert()->succes('Succes', 'Successfully Created');
+        alert()->success('Success', 'Successfully Created')->autoClose(1000);
         return redirect('/petugas');
     }
 
@@ -91,7 +91,7 @@ class PetugasController extends Controller
 
         $input = $request->all();
         $petugas->update($input);
-        alert()->succes('Succes', 'Successfully Updated');
+        alert()->success('Success', 'Successfully Updated')->autoClose(1000);
         return redirect('/petugas');
     }
 
@@ -105,7 +105,7 @@ class PetugasController extends Controller
     {
         $petugas = Petugas::find($id);
         $petugas->delete();
-        alert()->succes('Succes', 'Successfully Deleted');
+        alert()->success('Success', 'Successfully Deleted')->autoClose(1000);
         return back();
     }
 }

@@ -57,7 +57,7 @@ class PasienController extends Controller
 
         ]);
 
-        alert()->succes('Succes', 'Successfully Created');
+        alert()->success('Success', 'Successfully Created')->autoClose(1000);
         return redirect('/pasien');
     }
 
@@ -115,7 +115,7 @@ class PasienController extends Controller
             'keluhan' => $request->keluhan,
             'status_pasien' => $request->status_pasien,
         ]);
-        alert()->succes('Succes', 'Successfully Created');
+        alert()->success('Success', 'Successfully Created')->autoClose(1000);
         return redirect('/pasien');
     }
 
@@ -129,7 +129,7 @@ class PasienController extends Controller
     {
         $pasien = Pasien::find($id);
         $pasien->delete();
-        alert()->succes('Succes', 'Successfully Deleted');
+        alert()->success('Success', 'Successfully Deleted')->autoClose(1000);
         return back();
     }
 }
