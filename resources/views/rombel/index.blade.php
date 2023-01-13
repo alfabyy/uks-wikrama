@@ -8,8 +8,7 @@
     Data Rombel
 @endsection
 
-@section('content')
-    @if ($message = Session::get('success'))
+@if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
@@ -19,6 +18,8 @@
             <p>{{ $msg }}</p>
         </div>
     @endif
+
+@section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -26,7 +27,7 @@
                     <div class="card-header">
                         {{-- @if (Auth::user()->role == 'admin') --}}
                         <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal" class="btn btn-success"><i
-                                class="fa fa-plus"></i> Tambah</a>
+                            class="fa fa-plus"></i> Tambah</a>
                         {{-- @elseif (Auth::user()->role == 'petugas')
                             <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal"
                                 class="btn btn-success"><i class="fa fa-plus"></i> Tambah</a>
@@ -37,17 +38,14 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr class="text-center">
-                                    <th>No</th>
                                     <th>ID</th>
                                     <th>Nama rombel</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no = 1; ?>
                                 @foreach ($rombel as $row)
                                     <tr class="text-center">
-                                        <td>{{ $no++ }}</td>
                                         <td>{{ $row->id }}</td>
                                         <td>{{ $row->nama_rombel }}</td>
                                         <td>
@@ -57,7 +55,7 @@
                                                 @csrf
                                                 @method('delete')
                                                 <button type="button" type="button" data-toggle="modal"
-                                                    data-target="#exampleModal" class="btn btn-info"><i
+                                                    data-target="#exampleModal{{ $row->id }}" class="btn btn-warning"><i
                                                         class="fa fa-edit"></i></button>
                                                 <button type="submit" class="btn btn-danger"><i
                                                         class="fa fa-trash"></i></button>
@@ -72,35 +70,6 @@
                 </div>
             </div>
         </div>
-        <!-- Modal edit -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Rombel</h5>
-                    </div>
-                    <form action="{{ route('rombel.update', $row->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label class="form-label">Nama Rombel</label>
-                                <input type="text" name="nama_rombel" value="{{ $row->nama_rombel }}" required='required'
-                                    class="form-control">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                            <button href="{{ route('rombel.index') }}" type="submit"
-                                class="btn btn-danger">Kembali</button>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-        {{-- modal tambah --}}
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -129,4 +98,34 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal edit -->
+    @foreach ($rombel as $row)
+    <div class="modal fade" id="exampleModal{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Rombel</h5>
+            </div>
+            <form action="{{ route('rombel.update', $row->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Nama Rombel</label>
+                        <input type="text" name="nama_rombel" value="{{ $row->nama_rombel }}" required='required'
+                            class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Update</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>               
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection

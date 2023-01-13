@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Obat;
 use RealRashid\SweetAlert\Facades\Alert;
 
-
 class ObatController extends Controller
 {
     /**
