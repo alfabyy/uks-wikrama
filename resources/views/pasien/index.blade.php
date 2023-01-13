@@ -61,8 +61,6 @@ Pasien
                                         method="post">
                                         @csrf
                                         @method('delete')
-                                        <a href="{{route('pasien.show', $row->id)}}" class="btn btn-primary"><i
-                                                class="fa fa-eye"></i></a>
                                         {{-- @if(Auth::user()->role == 'admin') --}}
                                         <a href="{{route('pasien.edit', $row->id)}}" class="btn btn-warning"><i
                                                 class="fa fa-edit"></i></a>
