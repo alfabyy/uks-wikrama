@@ -51,18 +51,7 @@
             <span>Data Obat</span>
         </a>
     </li>
-    {{-- <li class="nav-item">
-        <a class="nav-link" href="/medical-check-up">
-            <i class="fas fa-file-medical-alt"></i>
-            <span>Medical Check Up</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/riwayat-penyakit">
-            <i class="fas fa-history"></i>
-            <span>Riwayat Penyakit</span>
-        </a>
-    </li> --}}
+
     <li class="nav-item">
         <a class="nav-link" href="/petugas">
             <i class="fas fa-user-md"></i>

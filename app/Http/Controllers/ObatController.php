@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Obat;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ObatController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -39,6 +40,7 @@ class ObatController extends Controller
         $input = $request->all();
         $input['kadaluarsa_obat'] = date('Y-m-d');
         Obat::create($input);
+        Alert::success('Congrats', 'You\'ve Successfully Created')->autoClose(1000);
         return redirect('/obat');
     }
 
@@ -83,6 +85,7 @@ class ObatController extends Controller
         $input = $request->all();
         $input['kadaluarsa_obat'] = date('Y-m-d');
         $obat->update($input);
+        alert()->success('Success', 'Successfully Updated')->autoClose(1000);
         return redirect('/obat');
     }
 
@@ -96,6 +99,7 @@ class ObatController extends Controller
     {
         $obat = Obat::find($id);
         $obat->delete();
+        alert()->success('Success', 'Successfully Deleted')->autoClose(1000);
         return back();
     }
 }

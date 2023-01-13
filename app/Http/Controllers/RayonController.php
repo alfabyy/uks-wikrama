@@ -17,8 +17,8 @@ class RayonController extends Controller
         // if(auth()->user()->role == 'visitor'){
         //     abort(403);
         // }
-        $rayon = Rayon::paginate(10);
-        return view('rayon.index', compact('rayon'));
+        $rayons = Rayon::paginate(10);
+        return view('rayon.index', compact('rayons'));
     }
 
     /**
@@ -41,6 +41,7 @@ class RayonController extends Controller
     {
         $input = $request->all();
         Rayon::create($input);
+        alert()->success('Success', 'Successfully Created')->autoClose(1000);
         return redirect('/rayon');
     }
 
@@ -83,6 +84,7 @@ class RayonController extends Controller
 
         $input = $request->all();
         $rayon->update($input);
+        alert()->success('Success', 'Successfully Updated')->autoClose(1000);
         return redirect('/rayon');
     }
 
@@ -96,6 +98,7 @@ class RayonController extends Controller
     {
         $rayon = Rayon::find($id);
         $rayon->delete();
+        alert()->success('Success', 'Successfully Deleted')->autoClose(1000);
         return back();
     }
 }
