@@ -141,7 +141,7 @@
                                 class="form-control" placeholder="Nama Obat...">
                             <label for="" class="form-label">Fungsi Obat :</label>
                             <input required type="text" class="form-control" name="fungsi_obat"
-                                value="{{ $row->fungsi }}" placeholder="Fungsi...">
+                                value="{{ $row->fungsi_obat }}" placeholder="Fungsi...">
                             <label for="" class="form-label">Jumlah stok :</label>
                             <input required type="number" min={{ $row->jumlah_obat }} class="form-control"
                                 value="{{ $row->jumlah_obat }}" name="jumlah_obat" placeholder="Jumlah Obat...">

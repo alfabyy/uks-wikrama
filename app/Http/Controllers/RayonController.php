@@ -17,8 +17,8 @@ class RayonController extends Controller
         // if(auth()->user()->role == 'visitor'){
         //     abort(403);
         // }
-        $rayon = Rayon::paginate(10);
-        return view('rayon.index', compact('rayon'));
+        $rayons = Rayon::paginate(10);
+        return view('rayon.index', compact('rayons'));
     }
 
     /**
@@ -41,6 +41,7 @@ class RayonController extends Controller
     {
         $input = $request->all();
         Rayon::create($input);
+        alert()->succes('Succes', 'Successfully Created');
         return redirect('/rayon');
     }
 

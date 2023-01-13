@@ -86,6 +86,7 @@ class RombelController extends Controller
 
         $input = $request->all();
         $rombel->update($input);
+        alert()->succes('Succes', 'Successfully Updated');
         return redirect('/rombel');
     }
 

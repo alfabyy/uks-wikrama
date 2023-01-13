@@ -32,7 +32,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($rayon as $row)
+                                @foreach ($rayons as $row)
                                     <tr class="text-center">
                                         <td>{{ $row->id }}</td>
                                         <td>{{ $row->nama_rayon }}</td>
@@ -40,12 +40,12 @@
                                         <td>{{ $row->no_telp }}</td>
                                         <td>
                                             <form action="{{ route('rayon.destroy', $row->id) }}"
-                                                onsubmit="return confirm('Hapus Rayon {{ $row->nama_rayon }} ?')"
+                                                onsubmit="return confirm('Yakin Hapus Rayon {{ $row->nama_rayon }} ?')"
                                                 method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="button" type="button" data-toggle="modal"
-                                                    data-target="#exampleModal{{ $row->id }}" class="btn btn-info"><i
+                                                    data-target="#exampleModal" class="btn btn-info"><i
                                                         class="fa fa-edit"></i></button>
                                                 <button type="submit" class="btn btn-danger"><i
                                                         class="fa fa-trash"></i></button>
@@ -55,44 +55,8 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $rayon->appends(Request::all())->links('pagination::bootstrap-4') }}
+                        {{ $rayons->appends(Request::all())->links('pagination::bootstrap-4') }}
                     </div>
-                </div>
-            </div>
-        </div>
-        {{-- Modal Edit --}}
-        <div class="modal fade" id="exampleModal{{ $row->id }}" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Rayon</h5>
-                    </div>
-                    <form action="{{ route('rayon.update', $row->id) }}" method="POST">
-
-                        @csrf
-                        @method('PUT')
-                        <div class="modal-body">
-                            <label for="" class="form-label">Nama Rayon :</label>
-                            <select name="nama_rayon" id="" class="form-control">
-                                <option value="">--PILIH--</option>
-                                <option value="AL-IKROM 1">AL-IKROM 1</option>
-                                <option value="AL-IKROM 2">AL-IKROM 2</option>
-                                <option value="AL-IKROM 3">AL-IKROM 3</option>
-                            </select>
-                            <label for="" class="form-label">Nama Pembimbing :</label>
-                            <input required type="text" class="form-control" value="{{ $row->nama_pembimbing }}"
-                                name="nama_pembimbing" placeholder="Pembimbing...">
-                            <label for="" class="form-label">No HP Pembimbing :</label>
-                            <input required type="number" class="form-control" value="{{ $row->no_telp }}" name="no_telp"
-                                placeholder="+62 8xx-xxxx-xxxx">
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-success">Update</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -135,4 +99,38 @@
             </div>
         </div>
     </div>
+    {{-- Modal Edit --}}
+    @foreach ($rayons as $row)
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Rayon</h5>
+                    </div>
+                    <form action="{{ route('rayon.update', $row->id) }}" method="POST">
+
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <label for="" class="form-label">Nama Rayon :</label>
+                            <input required type="text" class="form-control" value="{{ $row->nama_rayon }}"
+                                name="nama_rayon" placeholder="Rayon...">
+                            <label for="" class="form-label">Nama Pembimbing :</label>
+                            <input required type="text" class="form-control" value="{{ $row->nama_pembimbing }}"
+                                name="nama_pembimbing" placeholder="Pembimbing...">
+                            <label for="" class="form-label">No HP Pembimbing :</label>
+                            <input required type="number" class="form-control" value="{{ $row->no_telp }}"
+                                name="no_telp" placeholder="+62 8xx-xxxx-xxxx">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection

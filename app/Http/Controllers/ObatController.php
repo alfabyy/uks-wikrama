@@ -41,7 +41,7 @@ class ObatController extends Controller
         $input = $request->all();
         $input['kadaluarsa_obat'] = date('Y-m-d');
         Obat::create($input);
-        Alert::success('Congrats', 'You\'ve Successfully Registered');
+        Alert::success('Congrats', 'You\'ve Successfully Created');
         return redirect('/obat');
     }
 
@@ -86,6 +86,7 @@ class ObatController extends Controller
         $input = $request->all();
         $input['kadaluarsa_obat'] = date('Y-m-d');
         $obat->update($input);
+        alert()->succes('Succes', 'Successfully Updated');
         return redirect('/obat');
     }
 
@@ -99,7 +100,7 @@ class ObatController extends Controller
     {
         $obat = Obat::find($id);
         $obat->delete();
-        alert()->success('Title', 'Lorem Lorem Lorem');
+        alert()->success('Success', 'Successfully Deleted');
         return back();
     }
 }
