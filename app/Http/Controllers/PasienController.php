@@ -10,7 +10,7 @@ use App\Models\Rombel;
 
 class PasienController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -21,7 +21,7 @@ class PasienController extends Controller
         $siswa = Siswa::all();
         $rombel = Rombel::all();
         $rayon = Rayon::all();
-        return view('pasien.index', compact('pasien','siswa','rombel','rayon'));
+        return view('pasien.index', compact('pasien', 'siswa', 'rombel', 'rayon'));
     }
 
     /**
@@ -57,7 +57,7 @@ class PasienController extends Controller
 
         ]);
 
-
+        alert()->success('Success', 'Successfully Created')->autoClose(1000);
         return redirect('/pasien');
     }
 
@@ -91,7 +91,7 @@ class PasienController extends Controller
         $siswa = Siswa::all();
         $rayon = Rayon::all();
         $rombel = Rombel::all();
-        return view('pasien.edit',compact('pasien','siswa','rayon','rombel'));
+        return view('pasien.edit', compact('pasien', 'siswa', 'rayon', 'rombel'));
     }
 
     /**
@@ -115,6 +115,7 @@ class PasienController extends Controller
             'keluhan' => $request->keluhan,
             'status_pasien' => $request->status_pasien,
         ]);
+        alert()->success('Success', 'Successfully Created')->autoClose(1000);
         return redirect('/pasien');
     }
 
@@ -128,6 +129,7 @@ class PasienController extends Controller
     {
         $pasien = Pasien::find($id);
         $pasien->delete();
+        alert()->success('Success', 'Successfully Deleted')->autoClose(1000);
         return back();
     }
 }

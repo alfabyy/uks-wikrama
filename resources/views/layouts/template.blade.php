@@ -23,6 +23,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://kit.fontawesome.com/212d3d2392.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 
     <!-- select2 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
@@ -55,24 +58,21 @@
                     </button>
                     <ul class="ml-auto navbar-nav">
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="text-white d-none d-lg-inline large">
                                     @if (Auth::check())
                                         Halo, {{ Auth::user()->name }}
                                     @endif
                                 </span>
                             </a>
-                            <div class="shadow dropdown-menu dropdown-menu-right animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="shadow dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="userDropdown">
                                 <span class="ml-4 text-gray d-none d-lg-inline small">
                                     @if (Auth::check())
                                         {{ Auth::user()->name }}
                                     @endif
                                 </span>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal"
-                                    data-target="#logoutModal">
+                                <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
                                     <i class="mr-2 text-gray-400 fas fa-sign-out-alt fa-sm fa-fw"></i>
                                     Logout
                                 </a>
@@ -100,8 +100,7 @@
                     <!-- EndContent -->
 
                     <!-- Modal Logout -->
-                    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+                    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -114,16 +113,25 @@
                                     <p>Yakin anda akan keluar?</p>
                                 </div>
                                 <div class="modal-footer">
+
+                                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                                    <a class="btn btn-danger" href="" onclick="event.preventDefault();
+
                                     <button type="button" class="btn btn-outline-primary"
                                         data-dismiss="modal">Cancel</button>
                                     <a class="btn btn-danger" href=""
                                         onclick="event.preventDefault();
+
                                                      document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
 
+
+                                    <form id="logout-form" action="" method="POST" style="display: none;">
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         style="display: none;">
+
                                         @csrf
                                         @method('POST')
                                     </form>
@@ -138,10 +146,11 @@
             <footer class="mt-4 bg-white sticky-footer">
                 <div class="container my-auto">
                     <div class="my-auto text-center copyright">
-                        <span>copyright &copy; Alfaby -
+                        <span>&copy; Copyright
                             <script>
                                 document.write(new Date().getFullYear());
                             </script>
+                            - UKS Wikrama By FaliqhEdits, Alfabyy
                         </span>
                     </div>
                 </div>
@@ -159,21 +168,28 @@
     <script src="https://indrijunanda.github.io/RuangAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://indrijunanda.github.io/RuangAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="https://indrijunanda.github.io/RuangAdmin/js/ruang-admin.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+<<<<<<< HEAD
      <script src="vendor/jquery/jquery.min.js"></script>
      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+=======
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+>>>>>>> 7a50df53e0abb4503c907c342606b82043ea8964
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
         integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+
     @yield('chart')
 
 

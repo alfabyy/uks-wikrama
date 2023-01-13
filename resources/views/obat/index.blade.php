@@ -15,10 +15,10 @@
                 <div class="card">
                     <div class="card-header">
                         {{-- @if (Auth::user()->role == 'admin') --}}
-                        <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal" class="btn btn-success"><i
-                            class="fa fa-plus"></i> Tambah</a>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal"
+                                class="btn btn-success"><i class="fa fa-plus"></i> Tambah</a>
                         {{-- @elseif (Auth::user()->role == 'petugas') --}}
-                            {{-- <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal"
+                        {{-- <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal"
                                 class="btn btn-success"><i class="fa fa-plus"></i> Tambah</a> --}}
                         {{-- @else
                         @endif --}}
@@ -27,8 +27,9 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr class="text-center">
-                                    <th>No.</th>
+                                    <th>ID</th>
                                     <th>Nama</th>
+                                    <th>Fungsi</th>
                                     <th>Jumlah</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -39,6 +40,7 @@
                                     <tr class="text-center">
                                         <td>{{ $loop->iteration + $obat->perpage() * ($obat->currentpage() - 1) }}</td>
                                         <td>{{ $row->nama_obat }}</td>
+                                        <td>{{ $row->fungsi_obat }}</td>
                                         <td>{{ $row->jumlah_obat }}</td>
                                         <td>
                                             @if ($row->status_obat == 'Tersedia')
@@ -51,17 +53,24 @@
                                         </td>
                                         <td>
                                             <form action="{{ route('obat.destroy', $row->id) }}"
-                                                onsubmit="return confirm('Hapus obat {{ $row->nama_obat }} ?')"
+                                                onsubmit="return confirm('Yakin Hapus {{ $row->nama_obat }} ?')"
                                                 method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <a href="{{ route('obat.show', $row->id) }}" class="btn btn-primary"><i
-                                                    class="fa fa-eye"></i></a>
-                                                <button type="button" type="button" data-toggle="modal"
-                                                data-target="#exampleModal" class="btn btn-warning"><i
-                                                    class="fa fa-edit"></i></button>
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button>
+                                                        class="fa fa-eye"></i></a>
+                                                {{-- @if (Auth::user()->role == 'admin') --}}
+                                                    <a href="{{ route('obat.edit', $row->id) }}" class="btn btn-warning"><i
+                                                            class="fa fa-edit"></i></a>
+                                                    <button type="submit" class="btn btn-danger"><i
+                                                            class="fa fa-trash"></i></button>
+                                                {{-- @elseif (Auth::user()->role == 'petugas') --}}
+                                                    {{-- <a href="{{ route('obat.edit', $row->id) }}" class="btn btn-warning"><i
+                                                            class="fa fa-edit"></i></a>
+                                                    <button type="submit" class="btn btn-danger"><i
+                                                            class="fa fa-trash"></i></button> --}}
+                                                {{-- @else
+                                                @endif --}}
                                             </form>
                                         </td>
                                     </tr>
@@ -73,6 +82,7 @@
                 </div>
             </div>
         </div>
+        {{-- Modal Tambah --}}
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -93,8 +103,8 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Fungsi Obat</label>
-                                <input type="text" name="fungsi_obat" value="{{ old('fungsi_obat') }}" required='required'
-                                    class="form-control">
+                                <input type="text" name="fungsi_obat" value="{{ old('fungsi_obat') }}"
+                                    required='required' class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Jumlah Obat</label>
@@ -124,42 +134,4 @@
             </div>
         </div>
     </div>
-
-    {{-- Modal Edit --}}
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Rombel</h5>
-            </div>
-            <form action="{{ route('obat.update', $row->id) }}" method="POST">
-                @csrf
-                @method('PUT')
-                <div class="modal-body">
-                    <label for="" class="form-label">Nama Obat :</label>
-                    <input required type="text" name="nama_obat" value="{{ $row->nama_obat }}"
-                        class="form-control" placeholder="Nama Obat...">
-                    <label for="" class="form-label">Fungsi Obat :</label>
-                    <input required type="text" class="form-control" name="fungsi_obat"
-                        value="{{ $row->fungsi_obat }}" placeholder="Fungsi...">
-                    <label for="" class="form-label">Jumlah stok :</label>
-                    <input required type="number" min={{ $row->jumlah_obat }} class="form-control"
-                        value="{{ $row->jumlah_obat }}" name="jumlah_obat" placeholder="Jumlah Obat...">
-                    <div class="form-group">
-                        <label class="form-label">Status</label>
-                        <select name="status_obat" id="status-edit" required="required" class="form-control">
-                            <option value="Tersedia">Tersedia</option>
-                            <option value="Tidak Tersedia">Tidak Tersedia</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-success">Update</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 @endsection
