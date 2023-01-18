@@ -86,7 +86,7 @@
                             <div class="form-group">
                                 <label class="form-label">Nama rombel</label>
                                 <input type="text" name="nama_rombel" value="{{ old('nama_rombel') }}"
-                                    required='required' class="form-control">
+                                    required='required' class="form-control"placeholder="Rombel">
                             </div>
                         </div>
                         <div class="modal-footer">

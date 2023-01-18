@@ -83,7 +83,7 @@ Dashboard
                         <div class="text-xs font-weight-bold text-uppercase mb-1">Pasien Dirujuk</div>
                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $rujukcount }}</div>
                         <div class="mt-2 mb-0 text-muted text-xs">
-                            <span>Jumlah Pasien Dirujuk Ke Rumah Sakit</span>
+                            <span>Jumlah Pasien Dirujuk</span>
                         </div>
                     </div>
                     <div class="col-auto">
@@ -309,7 +309,7 @@ Dashboard
                             <div class="text-xs font-weight-bold text-uppercase mb-1">Pasien Dirujuk</div>
                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $rujukcount }}</div>
                             <div class="mt-2 mb-0 text-muted text-xs">
-                                <span>Jumlah Pasien Dirujuk Ke Rumah Sakit</span>
+                                <span>Jumlah Pasien Dirujuk</span>
                             </div>
                         </div>
                         <div class="col-auto">
