@@ -20,6 +20,9 @@ class CreateSiswaTable extends Migration
             $table->date('tanggal_lahir');
             $table->string('rayon');
             $table->string('rombel');
+            $table->string('alamat');
+            $table->string('tinggi_badan');
+            $table->string('berat_badan');
             $table->timestamps();
         });
     }

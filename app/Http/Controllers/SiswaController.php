@@ -66,7 +66,7 @@ class SiswaController extends Controller
 
         Alert::success('Success', 'Siswa berhasil ditambahkan')->autoClose(1000);
 
-        return Response()->json($siswa);
+        return redirect('/siswa');
     }
 
     /**
