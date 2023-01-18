@@ -16,8 +16,9 @@
     <link href="{{ asset('dist/img/logo/logo4.png') }}" rel="icon">
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('dist/css/app.css') }}" rel="stylesheet">
@@ -44,4 +45,8 @@
     <script src="https://indrijunanda.github.io/RuangAdmin/js/ruang-admin.min.js"></script>
 </body>
 
+
 </html>
+
+</html>
+

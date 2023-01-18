@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Petugas;
+use App\Models\Rayon;
+use App\Models\Rombel;
 
 class PetugasController extends Controller
 {
@@ -18,7 +20,9 @@ class PetugasController extends Controller
         //     abort(403);
         // }
         $petugas = Petugas::paginate(10);
-        return view('petugas.index', compact('petugas'));
+        $rayon = Rayon::all();
+        $rombel = Rombel::all();
+        return view('petugas.index', compact('petugas', 'rayon', 'rombel'));
     }
 
     /**
@@ -41,6 +45,7 @@ class PetugasController extends Controller
     {
         $input = $request->all();
         Petugas::create($input);
+        alert()->success('Success', 'Successfully Created')->autoClose(1000);
         return redirect('/petugas');
     }
 
@@ -50,7 +55,7 @@ class PetugasController extends Controller
      * @param  \App\Models\Petugas  $petugas
      * @return \Illuminate\Http\Response
      */
-    public function show(Petugas $petugas)
+    public function show($id)
     {
         $petugas = Petugas::find($id);
         return view('petugas.detail', compact('petugas'));
@@ -68,7 +73,9 @@ class PetugasController extends Controller
         //     abort(403);
         // }
         $petugas = Petugas::find($id);
-        return view('petugas.edit', compact('petugas'));
+        $rayon = Rayon::all();
+        $rombel = Rombel::all();
+        return view('petugas.edit', compact('petugas', 'rayon', 'rombel'));
     }
 
     /**
@@ -84,6 +91,7 @@ class PetugasController extends Controller
 
         $input = $request->all();
         $petugas->update($input);
+        alert()->success('Success', 'Successfully Updated')->autoClose(1000);
         return redirect('/petugas');
     }
 
@@ -97,6 +105,7 @@ class PetugasController extends Controller
     {
         $petugas = Petugas::find($id);
         $petugas->delete();
+        alert()->success('Success', 'Successfully Deleted')->autoClose(1000);
         return back();
     }
 }
