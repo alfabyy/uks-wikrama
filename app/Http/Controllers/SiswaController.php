@@ -11,7 +11,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class SiswaController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -64,7 +64,7 @@ class SiswaController extends Controller
             'berat_badan' => $request->berat_badan,
         ]);
 
-        Alert::success('Berhasil', 'Pasien berhasil ditambahkan');
+        Alert::success('Success', 'Siswa berhasil ditambahkan')->autoClose(1000);
 
         return Response()->json($siswa);
     }
@@ -112,6 +112,7 @@ class SiswaController extends Controller
         $input = $request->all();
         $input['tanggal_lahir'] = date('Y-m-d');
         $siswa->update($input);
+        alert()->success('Succes', 'Successfully Updated')->autoClose(1000);
         return redirect('/siswa');
     }
 
@@ -125,6 +126,7 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::find($id);
         $siswa->delete();
+        alert()->success('Succes', 'Successfully Deleted')->autoClose(1000);
         return back();
     }
 }

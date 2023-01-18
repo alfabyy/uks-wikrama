@@ -18,7 +18,7 @@
                             <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal"
                                 class="btn btn-success"><i class="fa fa-plus"></i> Tambah</a>
                         {{-- @elseif (Auth::user()->role == 'petugas') --}}
-                            {{-- <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal"
+                        {{-- <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal"
                                 class="btn btn-success"><i class="fa fa-plus"></i> Tambah</a> --}}
                         {{-- @else
                         @endif --}}
@@ -27,8 +27,9 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr class="text-center">
-                                    <th>No.</th>
+                                    <th>ID</th>
                                     <th>Nama</th>
+                                    <th>Fungsi</th>
                                     <th>Jumlah</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -39,6 +40,7 @@
                                     <tr class="text-center">
                                         <td>{{ $loop->iteration + $obat->perpage() * ($obat->currentpage() - 1) }}</td>
                                         <td>{{ $row->nama_obat }}</td>
+                                        <td>{{ $row->fungsi_obat }}</td>
                                         <td>{{ $row->jumlah_obat }}</td>
                                         <td>
                                             @if ($row->status_obat == 'Tersedia')
@@ -51,7 +53,7 @@
                                         </td>
                                         <td>
                                             <form action="{{ route('obat.destroy', $row->id) }}"
-                                                onsubmit="return confirm('Hapus obat {{ $row->nama_obat }} ?')"
+                                                onsubmit="return confirm('Yakin Hapus {{ $row->nama_obat }} ?')"
                                                 method="post">
                                                 @csrf
                                                 @method('delete')
@@ -80,6 +82,7 @@
                 </div>
             </div>
         </div>
+        {{-- Modal Tambah --}}
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -100,8 +103,8 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Fungsi Obat</label>
-                                <input type="text" name="fungsi_obat" value="{{ old('fungsi_obat') }}" required='required'
-                                    class="form-control">
+                                <input type="text" name="fungsi_obat" value="{{ old('fungsi_obat') }}"
+                                    required='required' class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Jumlah Obat</label>
