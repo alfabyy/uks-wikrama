@@ -37,6 +37,20 @@
                         @endif --}}
                     </div>
                     <div class="card-body">
+                        <div style="justify-content: left">
+                            <form class="navbar-search col-md-3 mb-3 float-right" action="{{ route('siswa.search') }}" method="get">
+                                <div class="input-group">
+                                  <input name="search" type="text" class="form-control bg-light border-1 small"
+                                    placeholder="Cari Siswa.." aria-label="Search" aria-describedby="basic-addon2"
+                                    style="border-color: #66bb6a;">
+                                  <div class="input-group-append">
+                                    <button class="btn btn-success" type="submit">
+                                      <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </form>
+                        </div>
                         <table class="table table-hover">
                             <thead>
                                 <tr class="text-center">

@@ -45,6 +45,7 @@ Route::get('/rawat', [StatusController::class, 'index_rawat'])->middleware('auth
 Route::get('/rawat-sementara', [StatusController::class, 'index_rawat_sementara'])->middleware('auth');
 Route::get('/dirujuk', [StatusController::class, 'index_dirujuk'])->middleware('auth');
 Route::get('/sembuh', [StatusController::class, 'index_sembuh'])->middleware('auth');
+Route::get('/cari-siswa', [SiswaController::class, 'search'])->name('siswa.search')->middleware('auth');
 
 Auth::routes();
 
