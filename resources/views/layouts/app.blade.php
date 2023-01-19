@@ -23,10 +23,8 @@
     <!-- Styles -->
     <link href="{{ asset('dist/css/app.css') }}" rel="stylesheet">
 
-    <link href="https://indrijunanda.github.io/RuangAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-        type="text/css">
-    <link href="https://indrijunanda.github.io/RuangAdmin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"
-        type="text/css">
+    <link href="https://indrijunanda.github.io/RuangAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://iamfaliqhh.github.io/FaliqhEditsBootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="https://indrijunanda.github.io/RuangAdmin/css/ruang-admin.min.css" rel="stylesheet">
 </head>
 @include('sweetalert::alert')
@@ -49,4 +47,3 @@
 </html>
 
 </html>
-

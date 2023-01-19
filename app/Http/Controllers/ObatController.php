@@ -40,7 +40,7 @@ class ObatController extends Controller
         $input = $request->all();
         $input['kadaluarsa_obat'] = date('Y-m-d');
         Obat::create($input);
-        Alert::success('Congrats', 'You\'ve Successfully Created')->autoClose(1000);
+        Alert::success('Berhasil!', 'Obat Berhasil Ditambahkan')->autoClose(1000);
         return redirect('/obat');
     }
 
@@ -67,8 +67,8 @@ class ObatController extends Controller
         // if(auth()->user()->role == 'visitor'){
         //     abort(403);
         // }
-        $obat = Obat::find($id);
-        return view('obat.edit', compact('obat'));
+        // $obat = Obat::find($id);
+        // return view('obat.edit', compact('obat'));
     }
 
     /**
@@ -85,7 +85,7 @@ class ObatController extends Controller
         $input = $request->all();
         $input['kadaluarsa_obat'] = date('Y-m-d');
         $obat->update($input);
-        alert()->success('Success', 'Successfully Updated')->autoClose(1000);
+        alert()->success('Berhasil!', 'Berhasil Di Ubah')->autoClose(1000);
         return redirect('/obat');
     }
 
@@ -99,7 +99,7 @@ class ObatController extends Controller
     {
         $obat = Obat::find($id);
         $obat->delete();
-        alert()->success('Success', 'Successfully Deleted')->autoClose(1000);
+        alert()->success('Berhasil!', 'Berhasil Menghapus Data')->autoClose(1000);
         return back();
     }
 }
