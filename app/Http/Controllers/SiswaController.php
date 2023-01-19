@@ -57,11 +57,18 @@ class SiswaController extends Controller
             'nis' => $request->nis,
             'nama' => $request->nama,
             'tanggal_lahir' => $request->tanggal_lahir,
+            'jenis_kelamin' => $request->jenis_kelamin,
             'rayon' => $request->nama_rayon,
             'rombel' => $request->nama_rombel,
             'alamat' => $request->alamat,
             'tinggi_badan' => $request->tinggi_badan,
             'berat_badan' => $request->berat_badan,
+            // 'penyakit_bawaan' => $request->penyakit_bawaan,
+            // 'alergi' => $request->alergi,
+            'hobi' => $request->hobi,
+            'makanan_kesukaan' => $request->makanan_kesukaan,
+            // 'catatan' => $request->catatan,
+            
         ]);
 
         Alert::success('Berhasil!', 'Siswa Berhasil Ditambahkan')->autoClose(1000);
@@ -78,7 +85,9 @@ class SiswaController extends Controller
     public function show($id)
     {
         $siswa = Siswa::find($id);
-        return view('siswa.detail', compact('siswa'));
+        $rayon = Rayon::all();
+        $rombel = Rombel::all();
+        return view('siswa.detail', compact('siswa', 'rayon', 'rombel'));
     }
 
     /**
