@@ -104,7 +104,7 @@ Pasien
 
                         <div class="form-group">
                             <label class="form-label">Rombel</label>
-                            <select name="rombel" required="required" class="form-control">
+                            <select name="nama_rombel" required="required" class="form-control">
                                 <option value="">-- Pilih Rombel --</option>
                                 @foreach ($rombel as $row)
                                     <option value="{{ $row->nama_rombel }}">{{ $row->nama_rombel }}</option>
@@ -114,7 +114,7 @@ Pasien
 
                         <div class="form-group">
                             <label class="form-label">Rayon</label>
-                            <select name="rayon" required="required" class="form-control">
+                            <select name="nama_rayon" required="required" class="form-control">
                                 <option value="">-- Pilih Rayon --</option>
                                 @foreach ($rayon as $row)
                                     <option value="{{ $row->nama_rayon }}">{{ $row->nama_rayon }}</option>

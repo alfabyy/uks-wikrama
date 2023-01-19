@@ -14,19 +14,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-<<<<<<< HEAD
-                      
+
                         <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal" class="btn btn-success"><i
                             class="fa fa-plus"></i> Tambah</a>
-                     
-                          
-=======
-
-                        <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal" class="btn btn-success"><i
-                                class="fa fa-plus"></i> Tambah</a>
 
 
->>>>>>> 7a50df53e0abb4503c907c342606b82043ea8964
                     </div>
                     <div class="card-body">
                         <table class="table table-hover">
@@ -53,15 +45,9 @@
                                                 @csrf
                                                 @method('delete')
                                                 <button type="button" type="button" data-toggle="modal"
-<<<<<<< HEAD
                                                 data-target="#exampleModal{{ $row->id }}" class="btn btn-warning"><i
                                                     class="fa fa-edit"></i></button>
                                                     <button type="submit" class="btn btn-danger"><i
-=======
-                                                    data-target="#exampleModal" class="btn btn-info"><i
-                                                        class="fa fa-edit"></i></button>
-                                                <button type="submit" class="btn btn-danger"><i
->>>>>>> 7a50df53e0abb4503c907c342606b82043ea8964
                                                         class="fa fa-trash"></i></button>
                                             </form>
                                         </td>
@@ -113,7 +99,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
 
     {{-- Modal Edit --}}
     <div class="modal fade" id="exampleModal{{ $row->id }}" tabindex="-1" role="dialog"
@@ -171,40 +156,4 @@
                 </div>
             </div>
             <div class="modal-footer">
-=======
-    {{-- Modal Edit --}}
-    @foreach ($rayons as $row)
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Rayon</h5>
-                    </div>
-                    <form action="{{ route('rayon.update', $row->id) }}" method="POST">
-
-                        @csrf
-                        @method('PUT')
-                        <div class="modal-body">
-                            <label for="" class="form-label">Nama Rayon :</label>
-                            <input required type="text" class="form-control" value="{{ $row->nama_rayon }}"
-                                name="nama_rayon" placeholder="Rayon...">
-                            <label for="" class="form-label">Nama Pembimbing :</label>
-                            <input required type="text" class="form-control" value="{{ $row->nama_pembimbing }}"
-                                name="nama_pembimbing" placeholder="Pembimbing...">
-                            <label for="" class="form-label">No HP Pembimbing :</label>
-                            <input required type="number" class="form-control" value="{{ $row->no_telp }}"
-                                name="no_telp" placeholder="+62 8xx-xxxx-xxxx">
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-success">Update</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    @endforeach
->>>>>>> 7a50df53e0abb4503c907c342606b82043ea8964
 @endsection
