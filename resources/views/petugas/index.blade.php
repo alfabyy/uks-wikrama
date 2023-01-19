@@ -16,10 +16,10 @@
                 <div class="card">
                     <div class="card-header">
                         {{-- @if (Auth::user()->role == 'admin') --}}
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal"
-                                class="btn btn-success"><i class="fa fa-plus"></i> Tambah</a>
+                        <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal" class="btn btn-success"><i
+                                class="fa fa-plus"></i> Tambah</a>
                         {{-- @elseif (Auth::user()->role == 'petugas') --}}
-                            {{-- <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal"
+                        {{-- <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal"
                                 class="btn btn-success"><i class="fa fa-plus"></i> Tambah</a> --}}
                         {{-- @else
                         @endif --}}
@@ -46,12 +46,13 @@
                                         <td>{{ $row->jadwal }}</td>
                                         <td>
                                             <form action="{{ route('petugas.destroy', $row->id) }}"
-                                                onsubmit="return confirm('Hapus Petugas {{ $row->nama_petugas}} ?')"
+                                                onsubmit="return confirm('Hapus Petugas {{ $row->nama_petugas }} ?')"
                                                 method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <a href="{{ route('petugas.edit', $row->id) }}" class="btn btn-warning"><i
-                                                        class="fa fa-edit"></i></a>
+                                                <button type="button" type="button" data-toggle="modal"
+                                                    data-target="#exampleModal{{ $row->id }}"
+                                                    class="btn btn-warning"><i class="fa fa-edit"></i></button>
                                                 <button type="submit" class="btn btn-danger"><i
                                                         class="fa fa-trash"></i></button>
                                             </form>
@@ -65,6 +66,72 @@
                 </div>
             </div>
         </div>
+        <!-- Modal edit -->
+        @foreach ($petugas as $row)
+            <div class="modal fade" id="exampleModal{{ $row->id }}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Rombel</h5>
+                        </div>
+                        <form action="{{ route('petugas.update', $row->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="form-label">Nama Petugas</label>
+                                    <input type="text" name="nama_petugas" value="{{ $row->nama_petugas }}"
+                                        required='required' class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Rayon</label>
+                                    <select name="nama_rayon" required="required" class="form-control">
+                                        <option value="">--Pilih--</option>
+                                        @foreach ($rayon as $row)
+                                            <option value="{{ $row->nama_rayon }}"
+                                                @if ($row->nama_rayon) selected @endif>{{ $row->nama_rayon }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Rombel</label>
+                                    <select name="nama_rombel" required="required" class="form-control">
+                                        <option value="">--Pilih--</option>
+                                        @foreach ($rombel as $row)
+                                            <option value="{{ $row->nama_rombel }}"
+                                                @if ($row->nama_rombel) selected @endif>{{ $row->nama_rombel }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Jadwal</label>
+                                    <select name="jadwal" required="required" class="form-control">
+                                        @foreach ($petugas as $row)
+                                            <option value="">-- Pilih Hari --</option>
+                                            <option value="Senin">Senin</option>
+                                            <option value="Selasa">Selasa</option>
+                                            <option value="Rabu">Rabu</option>
+                                            <option value="Kamis">Kamis</option>
+                                            <option value="Jumat">Jumat</option>
+                                            <option value="Sabtu">Sabtu</option>
+                                            <option value="Minggu">Minggu</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">Update</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+        {{-- Modal Tambah --}}
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
