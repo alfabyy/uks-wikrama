@@ -33,6 +33,7 @@ Pasien
                                 <th>Rombel</th>
                                 <th>Rayon</th>
                                 <th>Status Pasien</th>
+                                <th>Tanggal Kunjungan</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -55,6 +56,7 @@ Pasien
                                     <span class="badge bg-success" style="color: white">Sembuh</span>
                                     @endif
                                 </td>
+                                <td>{{$row->tanggal_kunjungan}}</td>
                                 <td>
                                     <form action="{{route('pasien.destroy', $row->id)}}"
                                         onsubmit="return confirm('Hapus Data Sakit {{$row->nama_pasien}} ?')"
@@ -104,7 +106,7 @@ Pasien
 
                         <div class="form-group">
                             <label class="form-label">Rombel</label>
-                            <select name="rombel" required="required" class="form-control">
+                            <select name="nama_rombel" required="required" class="form-control">
                                 <option value="">-- Pilih Rombel --</option>
                                 @foreach ($rombel as $row)
                                     <option value="{{ $row->nama_rombel }}">{{ $row->nama_rombel }}</option>
@@ -114,7 +116,7 @@ Pasien
 
                         <div class="form-group">
                             <label class="form-label">Rayon</label>
-                            <select name="rayon" required="required" class="form-control">
+                            <select name="nama_rayon" required="required" class="form-control">
                                 <option value="">-- Pilih Rayon --</option>
                                 @foreach ($rayon as $row)
                                     <option value="{{ $row->nama_rayon }}">{{ $row->nama_rayon }}</option>
@@ -144,7 +146,7 @@ Pasien
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Keluhan</label>
+                            <label class="form-label">Penyakit/Keluhan</label>
                             <textarea name="keluhan" value="{{old('keluhan')}}" required='required' class="form-control"
                                 rows="3"></textarea>
                         </div>
