@@ -110,7 +110,7 @@
                                     <label class="form-label">Jadwal</label>
                                     <select name="jadwal" required="required" class="form-control">
                                         @foreach ($petugas as $row)
-                                            <option value="">-- Pilih Hari --</option>
+                                            <option value="{{ $row->jadwal }}">-- Pilih Hari --</option>
                                             <option value="Senin">Senin</option>
                                             <option value="Selasa">Selasa</option>
                                             <option value="Rabu">Rabu</option>

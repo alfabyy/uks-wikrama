@@ -48,10 +48,9 @@ Route::get('/sembuh', [StatusController::class, 'index_sembuh'])->middleware('au
 Route::get('/cari-siswa', [SiswaController::class, 'search'])->name('siswa.search')->middleware('auth');
 
 Auth::routes();
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/rekam-medis', [RekamMedisController::class, 'index'])->name('rekam-medis.index');
 // Route::get('/rekam-medis/search', [RekamMedisController::class, 'search'])->name('rekam-medis.search');
 // Route::get('/rekam-medis/{id}', [RekamMedisController::class, 'detail'])->name('rekam-medis.detail');
