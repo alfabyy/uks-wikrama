@@ -71,7 +71,7 @@ class SiswaController extends Controller
             
         ]);
 
-        Alert::success('Success', 'Siswa berhasil ditambahkan')->autoClose(1000);
+        Alert::success('Berhasil!', 'Siswa Berhasil Ditambahkan')->autoClose(1000);
 
         return redirect('/siswa');
     }
@@ -121,7 +121,7 @@ class SiswaController extends Controller
         $input = $request->all();
         $input['tanggal_lahir'] = date('Y-m-d');
         $siswa->update($input);
-        alert()->success('Succes', 'Successfully Updated')->autoClose(1000);
+        alert()->success('Berhasil!', 'Berhasil Di Ubah')->autoClose(1000);
         return redirect('/siswa');
     }
 
@@ -135,7 +135,7 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::find($id);
         $siswa->delete();
-        alert()->success('Succes', 'Successfully Deleted')->autoClose(1000);
+        alert()->success('Berhasil!', 'Berhasil Menghapus Data')->autoClose(1000);
         return back();
     }
 }

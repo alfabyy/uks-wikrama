@@ -42,7 +42,7 @@ class RombelController extends Controller
     {
         $input = $request->all();
         Rombel::create($input);
-        Alert::success('Congrats', 'You\'ve Successfully Created');
+        Alert::success('Berhasil!', 'Rombel Berhasil Ditambahkan');
         return redirect('/rombel');
     }
 
@@ -85,7 +85,7 @@ class RombelController extends Controller
 
         $input = $request->all();
         $rombel->update($input);
-        alert()->success('Succes', 'Successfully Updated')->autoClose(1000);
+        alert()->success('Berhasil!', 'Berhasil Di Ubah')->autoClose(1000);
         return redirect('/rombel');
     }
 
@@ -99,7 +99,7 @@ class RombelController extends Controller
     {
         $rombel = Rombel::find($id);
         $rombel->delete();
-        alert()->success('Succes', 'Successfully Deleted');
+        alert()->success('Berhasil!', 'Berhasil Menghapus Data');
         return back();
     }
 }
