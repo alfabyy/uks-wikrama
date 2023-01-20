@@ -138,4 +138,13 @@ class SiswaController extends Controller
         alert()->success('Berhasil!', 'Berhasil Menghapus Data')->autoClose(1000);
         return back();
     }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+        $rayon = Rayon::all();
+        $rombel = Rombel::all();
+        $siswa = Siswa::where('nama', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('siswa.index', compact('siswa', 'rayon', 'rombel'));
+    }
 }
