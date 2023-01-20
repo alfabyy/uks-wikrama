@@ -70,6 +70,12 @@
             <span>Rombel</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/jadwal">
+            <i class="fas fa-id-card"></i>
+            <span>Jadwal</span>
+        </a>
+    </li>
     <hr class="sidebar-divider">
     <li class="nav-item">
         <a class="nav-link">
