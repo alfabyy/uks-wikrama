@@ -11,4 +11,9 @@ class Obat extends Model
     
     protected $table  = 'obat';
     protected $guarded = [];
+
+    public function pasien()
+    {
+        return $this->hasMany(Pasien::class);
+    }
 }

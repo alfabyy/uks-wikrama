@@ -26,4 +26,9 @@ class Pasien extends Model
     {
         return $this->belongsTo(Rombel::class,'nama_rombel', 'nama_rombel');
     }
+
+    public function obat()
+    {
+        return $this->belongsTo(Rombel::class,'nama_obat', 'nama_obat');
+    }
 }
