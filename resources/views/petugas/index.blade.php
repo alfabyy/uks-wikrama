@@ -88,9 +88,9 @@
                                     <label class="form-label">Rayon</label>
                                     <select name="nama_rayon" required="required" class="form-control">
                                         <option value="">--Pilih--</option>
-                                        @foreach ($rayon as $row)
-                                            <option value="{{ $row->nama_rayon }}"
-                                                @if ($row->nama_rayon) selected @endif>{{ $row->nama_rayon }}
+                                        @foreach ($rayon as $r)
+                                            <option value="{{ $r->nama_rayon }}"
+                                                @if ($r->nama_rayon) selected @endif>{{ $r->nama_rayon }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -99,26 +99,37 @@
                                     <label class="form-label">Rombel</label>
                                     <select name="nama_rombel" required="required" class="form-control">
                                         <option value="">--Pilih--</option>
-                                        @foreach ($rombel as $row)
-                                            <option value="{{ $row->nama_rombel }}"
-                                                @if ($row->nama_rombel) selected @endif>{{ $row->nama_rombel }}
+                                        @foreach ($rombel as $r)
+                                            <option value="{{ $r->nama_rombel }}"
+                                                @if ($r->nama_rombel) selected @endif>{{ $r->nama_rombel }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Jadwal</label>
-                                    <select name="jadwal" required="required" class="form-control">
-                                        @foreach ($petugas as $row)
-                                            <option value="{{ $row->jadwal }}">-- Pilih Hari --</option>
-                                            <option value="Senin">Senin</option>
-                                            <option value="Selasa">Selasa</option>
-                                            <option value="Rabu">Rabu</option>
-                                            <option value="Kamis">Kamis</option>
-                                            <option value="Jumat">Jumat</option>
-                                            <option value="Sabtu">Sabtu</option>
-                                            <option value="Minggu">Minggu</option>
-                                        @endforeach
+                                    <select name="jadwal" id="jadwal" required="required" class="form-control">
+                                        <option @if ($row->jadwal == 'Senin') : selected @endif value="Senin"
+                                            id="senin">Senin
+                                        </option>
+                                        <option @if ($row->jadwal == 'Selasa') : selected @endif value="Selasa"
+                                            id="selasa">Selasa
+                                        </option>
+                                        <option @if ($row->jadwal == 'Rabu') : selected @endif value="Rabu"
+                                            id="rabu">Rabu
+                                        </option>
+                                        <option @if ($row->jadwal == 'Kamis') : selected @endif value="Kamis"
+                                            id="kamis">Kamis
+                                        </option>
+                                        <option @if ($row->jadwal == 'Jumat') : selected @endif value="Jumat"
+                                            id="jumat">Jumat
+                                        </option>
+                                        <option @if ($row->jadwal == 'Sabtu') : selected @endif value="Sabtu"
+                                            id="sabtu">Sabtu
+                                        </option>
+                                        <option @if ($row->jadwal == 'Minggu') : selected @endif value="Minggu"
+                                            id="minggu">Minggu
+                                        </option>
                                     </select>
                                 </div>
                             </div>
