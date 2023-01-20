@@ -263,6 +263,7 @@
                                             id="rawat">Rawat</option>
                                         <option @if ($row->status_pasien == 'Dirujuk') : selected @endif value="Dirujuk"
                                             id="rujuk">Dirujuk</option>
+                                        <option value="Sembuh">Sembuh</option>
 
                                     </select>
                                 </div>
