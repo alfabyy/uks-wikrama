@@ -13,6 +13,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\JadwalController;
 
 
 /*
@@ -37,6 +38,7 @@ Route::resource('/siswa', SiswaController::class);
 Route::resource('/pasien', PasienController::class);
 Route::resource('/petugas', PetugasController::class);
 Route::resource('/rekam-medis', RekamMedisController::class);
+Route::resource('/jadwal', JadwalController::class);
 
 
 Auth::routes();
