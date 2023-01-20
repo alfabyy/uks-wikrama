@@ -254,12 +254,16 @@
                                     <label class="form-label">Status Pasien</label>
                                     <select name="status_pasien" id="status_pasien" required="required"
                                         class="form-control">
-                                        <option value="{{ $row->status_pasien }}" id="status_active">
-                                            {{ $row->status_pasien }}</option>
-                                        <option value="Rawat Sementara" id="rawat_sementara">Rawat Sementara</option>
-                                        <option value="Rawat" id="rawat">Rawat</option>
-                                        <option value="Dirujuk" id="rujuk">Dirujuk</option>
-                                        <option value="Sembuh" id="sembuh">Sembuh</option>
+
+                                        {{-- <option value="{{ $row->status_pasien }}" id="status_active">
+                                            {{ $row->status_pasien }}</option> --}}
+                                        <option @if ($row->status_pasien == 'Rawat sementara') : selected @endif value="Rawat sementara"
+                                            id="rawat_sementara">Rawat Sementara</option>
+                                        <option @if ($row->status_pasien == 'Rawat') : selected @endif value="Rawat"
+                                            id="rawat">Rawat</option>
+                                        <option @if ($row->status_pasien == 'Dirujuk') : selected @endif value="Dirujuk"
+                                            id="rujuk">Dirujuk</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -468,7 +472,7 @@
             </script>
             <script>
                 $(document).ready(function() {
-                    $('#edit-btn').on('click', function() {
+                    $('#status_pasien').on('click', function() {
                         var status = $('#status_active').val();
                         var rawat_sementara = $('#rawat_sementara').val();
                         var rawat = $('#rawat').val();
