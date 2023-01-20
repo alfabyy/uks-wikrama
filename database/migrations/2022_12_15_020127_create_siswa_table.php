@@ -18,8 +18,18 @@ class CreateSiswaTable extends Migration
             $table->string('nis');
             $table->string('nama');
             $table->date('tanggal_lahir');
+            $table->string('jenis_kelamin');
             $table->string('rayon');
             $table->string('rombel');
+            $table->string('alamat');
+            $table->string('tinggi_badan');
+            $table->string('berat_badan');
+            $table->string('penyakit_bawaan')->nullable();
+            $table->string('alergi')->nullable();
+            $table->string('hobi');
+            $table->string('makanan_kesukaan');
+            $table->string('catatan')->nullable();
+            $table->string('jumlah_kunjungan')->nullable();
             $table->timestamps();
         });
     }
