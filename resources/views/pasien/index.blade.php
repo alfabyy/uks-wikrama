@@ -67,8 +67,10 @@
                                                 <button type="button" type="button" id="edit-btn" data-toggle="modal"
                                                     data-target="#exampleModal{{ $row->id }}"
                                                     class="btn btn-warning"><i class="fa fa-edit"></i></button>
+                                                    @if (Auth::user()->role == 'admin')
                                                 <button type="submit" class="btn btn-danger"><i
                                                         class="fa fa-trash"></i></button>
+                                                        @endif
                                                 {{-- @elseif (Auth::user()->role == 'petugas') --}}
                                                 {{-- <a href="{{route('pasien.edit', $row->id)}}" class="btn btn-warning"><i
                                                 class="fa fa-edit"></i></a>
@@ -94,7 +96,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit Rombel</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Pasien</h5>
                         </div>
                         <form action="{{ route('pasien.update', $row->id) }}" method="POST">
                             @csrf
@@ -149,9 +151,110 @@
                                     <textarea name="keluhan" value="{{ $row->keluhan }}" required='required' class="form-control" rows="4">{{ $row->keluhan }}</textarea>
                                 </div>
                                 <div class="form-group">
+                                    <label class="form-label">Sarapan</label>
+                                    <br>
+                                    <input type="radio" name="makan_pagi" value="Sudah" {{$row->makan_pagi == 'Sudah'? 'checked' : ''}} required> Sudah
+                                    <input type="radio" name="makan_pagi" value="Belum" {{$row->makan_pagi == 'Belum'? 'checked' : ''}} required> Belum
+                                </div>
+                                {{-- <div id="cek" style="display: none;"> --}}
+                                    <div class="form-group">
+                                        <label class="form-label">Makan Siang</label>
+                                        <br>
+                                        <input type="radio" name="makan_siang" value="Sudah" {{$row->makan_siang == 'Sudah'? 'checked' : ''}} > Sudah
+                                        <input type="radio" name="makan_siang" value="Belum" {{$row->makan_siang == 'Belum'? 'checked' : ''}} > Belum
+                                    </div>
+                                {{-- </div> --}}
+                                {{-- <div id="cekk" style="display: none;"> --}}
+                                    <div class="form-group">
+                                        <label class="form-label">Makan Malam</label>
+                                        <br>
+                                        <input type="radio" name="makan_malam" value="Sudah" {{$row->makan_malam == 'Sudah'? 'checked' : ''}} > Sudah
+                                        <input type="radio" name="makan_malam" value="Belum" {{$row->makan_malam == 'Belum'? 'checked' : ''}} > Belum
+                                    </div>
+                                    <br>
+                                {{-- </div> --}}
+
+                                <div class="form-group">
+                                    <label class="form-label">Obat Pagi</label>
+                                    <br>
+                                    <input type="radio" name="obat_pagi" value="Sudah" {{$row->obat_pagi == 'Sudah'? 'checked' : ''}} required> Sudah
+                                    <input type="radio" name="obat_pagi" value="Belum" {{$row->obat_pagi == 'Belum'? 'checked' : ''}} required> Belum
+                                </div>
+                                {{-- <div id="cekk" style="display: none;"> --}}
+                                    <div class="form-group">
+                                        <label class="form-label">Jenis Obat</label>
+                                        <select name="jenis_obat_pagi" class="form-control">
+                                            @foreach ($obat as $o)
+                                                <option value="{{ $o->nama_obat }}"
+                                                    @if ($row->jenis_obat_pagi == $o->nama_obat) selected @endif>{{ $o->nama_obat }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Jumlah</label>
+                                        <input type="number" name="jumlah_obat_pagi" value="{{ $row->jumlah_obat_pagi }}"
+                                            class="form-control">
+                                    </div>
+                                    <br>
+                                {{-- </div> --}}
+
+                                <div class="form-group">
+                                    <label class="form-label">Obat Siang</label>
+                                    <br>
+                                    <input type="radio" id="y" onclick="javascript:yescek()" name="obat_siang" value="Sudah" {{$row->obat_siang == 'Sudah'? 'checked' : ''}} required> Sudah
+                                    <input type="radio" id="n" onclick="javascript:yescek()" name="obat_siang" value="Belum" {{$row->obat_siang == 'Belum'? 'checked' : ''}} required> Belum
+                                </div>
+                                <div id="cekk" style="display: none;">
+                                    <div class="form-group">
+                                        <label class="form-label">Jenis Obat</label>
+                                        <select name="jenis_obat_siang" class="form-control">
+                                            @foreach ($obat as $o)
+                                                <option value="{{ $o->nama_obat }}"
+                                                    @if ($row->jenis_obat_siang == $o->nama_obat) selected @endif>{{ $o->nama_obat }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Jumlah</label>
+                                        <input type="number" name="jumlah_obat_siang" value="{{ $row->jumlah_obat_siang }}"
+                                            class="form-control">
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Obat Malam</label>
+                                    <br>
+                                    <input type="radio" id="yes3" onclick="javascript:ngecek3()" name="obat_malam" value="Sudah" {{$row->obat_malam == 'Sudah'? 'checked' : ''}} required> Sudah
+                                    <input type="radio" id="no3" onclick="javascript:ngecek3()" name="obat_malam" value="Belum" {{$row->obat_malam == 'Belum'? 'checked' : ''}} required> Belum
+                                </div>
+                                <div id="cek3" style="display: none;">
+                                    <div class="form-group">
+                                        <label class="form-label">Jenis Obat</label>
+                                        <select name="jenis_obat_malam"  class="form-control">
+                                            @foreach ($obat as $o)
+                                                <option value="{{ $o->nama_obat }}"
+                                                    @if ($row->jenis_obat_malam == $o->nama_obat) selected @endif>{{ $o->nama_obat }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Jumlah</label>
+                                        <input type="number" name="jumlah_obat_malam" value="{{ $row->jumlah_obat_malam }}"
+                                             class="form-control">
+                                    </div>
+                                    <br>
+                                </div>
+
+                                
+                                <div class="form-group">
                                     <label class="form-label">Status Pasien</label>
                                     <select name="status_pasien" id="status_pasien" required="required"
                                         class="form-control">
+
                                         {{-- <option value="{{ $row->status_pasien }}" id="status_active">
                                             {{ $row->status_pasien }}</option> --}}
                                         <option @if ($row->status_pasien == 'Rawat sementara') : selected @endif value="Rawat sementara"
@@ -160,6 +263,7 @@
                                             id="rawat">Rawat</option>
                                         <option @if ($row->status_pasien == 'Dirujuk') : selected @endif value="Dirujuk"
                                             id="rujuk">Dirujuk</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -228,13 +332,13 @@
 
                             <div class="form-group">
                                 <label class="form-label">Suhu</label>
-                                <input name="suhu" value="{{ old('suhu') }}" required='required'
+                                <input type="number" name="suhu" value="{{ old('suhu') }}" required='required'
                                     class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Tensi Darah</label>
-                                <input name="tensi_darah" value="{{ old('tensi_darah') }}" required='required'
+                                <input type="number" name="tensi_darah" value="{{ old('tensi_darah') }}" required='required'
                                     class="form-control">
                             </div>
 
@@ -242,6 +346,100 @@
                                 <label class="form-label">Penyakit/Keluhan</label>
                                 <textarea name="keluhan" value="{{ old('keluhan') }}" required='required' class="form-control" rows="3"></textarea>
                             </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Sarapan</label>
+                                <br>
+                                <input type="radio" name="makan_pagi" value="Sudah" required> Sudah
+                                <input type="radio" name="makan_pagi" value="Belum" required> Belum
+                            </div>
+                            {{-- <div id="c" style="display: none;"> --}}
+                                <div class="form-group">
+                                    <label class="form-label">Makan Siang</label>
+                                    <br>
+                                    <input type="radio" name="makan_siang" value="Sudah" required> Sudah
+                                    <input type="radio" name="makan_siang" value="Belum" required> Belum
+                                </div>
+                            {{-- </div> --}}
+                            {{-- <div id="ce" style="display: none;"> --}}
+                                <div class="form-group">
+                                    <label class="form-label">Makan Malam</label>
+                                    <br>
+                                    <input type="radio" name="makan_malam" value="Sudah" required> Sudah
+                                    <input type="radio" name="makan_malam" value="Belum" required> Belum
+                                </div>
+                                <br>
+                            {{-- </div> --}}
+
+                            <div class="form-group">
+                                <label class="form-label">Obat Pagi</label>
+                                <br>
+                                <input type="radio" id="yes" onclick="javascript:yescheck()" name="obat_pagi" value="Sudah" required> Sudah
+                                <input type="radio" id="no" onclick="javascript:yescheck()" name="obat_pagi" value="Belum" required> Belum
+                            </div>
+                            <div id="cek" style="display: none;">
+                                <div class="form-group">
+                                <label class="form-label">Jenis Obat</label>
+                                <select name="jenis_obat_pagi" class="form-control">
+                                    <option value="">-- Pilih Obat --</option>
+                                    @foreach ($obat as $row)
+                                        <option value="{{ $row->nama_obat }}">{{ $row->nama_obat }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Jumlah Obat</label>
+                                    <input type="number" name="jumlah_obat_pagi" value="{{ old('jumlah_obat_pagi') }}" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Obat Siang</label>
+                                <br>
+                                <input type="radio" id="yes1" onclick="javascript:ngecek()" name="obat_siang" value="Sudah" required> Sudah
+                                <input type="radio" id="no1" onclick="javascript:ngecek()" name="obat_siang" value="Belum" required> Belum
+                            </div>
+                            <div id="c" style="display: none;">
+                                <div class="form-group">
+                                <label class="form-label">Jenis Obat</label>
+                                <select name="jenis_obat_siang" class="form-control">
+                                    <option value="">-- Pilih Obat --</option>
+                                    @foreach ($obat as $row)
+                                        <option value="{{ $row->nama_obat }}">{{ $row->nama_obat }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Jumlah Obat</label>
+                                    <input type="number" name="jumlah_obat_siang" value="{{ old('jumlah_obat_malam') }}" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Obat Malam</label>
+                                <br>
+                                <input type="radio" id="yes2" onclick="javascript:ngecek2()" name="obat_malam" value="Sudah" required> Sudah
+                                <input type="radio" id="no2" onclick="javascript:ngecek2()" name="obat_malam" value="Belum" required> Belum
+                            </div>
+                            <div id="ce" style="display: none;">
+                                <div class="form-group">
+                                <label class="form-label">Jenis Obat</label>
+                                <select name="jenis_obat_malam" class="form-control">
+                                    <option value="">-- Pilih Obat --</option>
+                                    @foreach ($obat as $row)
+                                        <option value="{{ $row->nama_obat }}">{{ $row->nama_obat }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Jumlah Obat</label>
+                                    <input type="number" name="jumlah_obat_malam" value="{{ old('jumlah_obat_malam') }}" class="form-control">
+                                </div>
+                            </div>
+                            <br>
 
                             <div class="form-group">
                                 <label class="form-label">Status Pasien</label>
@@ -279,6 +477,7 @@
                         var rawat_sementara = $('#rawat_sementara').val();
                         var rawat = $('#rawat').val();
                         var rujuk = $('#rujuk').val();
+                        var sembuh = $('#sembuh').val();
                         if (status == rawat_sementara) {
                             $('#rawat_sementara').remove();
                         }
@@ -290,9 +489,53 @@
                         if (status == rujuk) {
                             $('#rujuk').remove();
                         }
+
+                        if (status == sembuh) {
+                            $('#sembuh').remove();
+                        }
                     });
                 });
             </script>
+             <script>
+                function yescheck(){
+                    if (document.getElementById('yes').checked) {
+                        document.getElementById('cek').style.display = 'block';
+                    }else
+                    document.getElementById('cek').style.display = 'none';
+                }
+               </script>
+                <script>
+                    function yescek(){
+                        if (document.getElementById('y').checked) {
+                            document.getElementById('cekk').style.display = 'block';
+                        }else
+                        document.getElementById('cekk').style.display = 'none';
+                    }
+                   </script>
+                    <script>
+                        function ngecek(){
+                            if (document.getElementById('yes1').checked) {
+                                document.getElementById('c').style.display = 'block';
+                            }else
+                            document.getElementById('c').style.display = 'none';
+                        }
+                       </script>
+                        <script>
+                            function ngecek2(){
+                                if (document.getElementById('yes2').checked) {
+                                    document.getElementById('ce').style.display = 'block';
+                                }else
+                                document.getElementById('ce').style.display = 'none';
+                            }
+                           </script>
+                           <script>
+                            function ngecek3(){
+                                if (document.getElementById('yes3').checked) {
+                                    document.getElementById('cek3').style.display = 'block';
+                                }else
+                                document.getElementById('cek3').style.display = 'none';
+                            }
+                           </script>
         </div>
     </div>
 @endsection

@@ -7,6 +7,7 @@ use App\Models\Pasien;
 use App\Models\Siswa;
 use App\Models\Rayon;
 use App\Models\Rombel;
+use App\Models\Obat;
 
 class PasienController extends Controller
 {
@@ -21,7 +22,8 @@ class PasienController extends Controller
         $siswa = Siswa::all();
         $rombel = Rombel::all();
         $rayon = Rayon::all();
-        return view('pasien.index', compact('pasien', 'siswa', 'rombel', 'rayon'));
+        $obat = Obat::all();
+        return view('pasien.index', compact('pasien', 'siswa', 'rombel', 'rayon', 'obat'));
     }
 
     /**
@@ -53,7 +55,19 @@ class PasienController extends Controller
             'suhu' => $request->suhu,
             'tensi_darah' => $request->tensi_darah,
             'keluhan' => $request->keluhan,
+            'makan_pagi' => $request->makan_pagi,
+            'makan_siang' => $request->makan_siang,
+            'makan_malam' => $request->makan_malam,
             'status_pasien' => $request->status_pasien,
+            'obat_pagi' => $request->obat_pagi,
+            'jenis_obat_pagi' => $request->jenis_obat_pagi,
+            'jumlah_obat_pagi' => $request->jumlah_obat_pagi,
+            'obat_siang' => $request->obat_siang,
+            'jenis_obat_siang' => $request->jenis_obat_siang,
+            'jumlah_obat_siang' => $request->jumlah_obat_siang,
+            'obat_malam' => $request->obat_malam,
+            'jenis_obat_malam' => $request->jenis_obat_malam,
+            'jumlah_obat_malam' => $request->jumlah_obat_malam,
 
         ]);
 
@@ -73,7 +87,8 @@ class PasienController extends Controller
         $siswa = Siswa::all();
         $rayon = Rayon::all();
         $rombel = Rombel::all();
-        return view('pasien.detail', compact('pasien', 'siswa', 'rayon', 'rayon'));
+        $obat = Obat::all();
+        return view('pasien.detail', compact('pasien', 'siswa', 'rayon', 'rayon', 'obat'));
     }
 
     /**
@@ -91,7 +106,8 @@ class PasienController extends Controller
         $siswa = Siswa::all();
         $rayon = Rayon::all();
         $rombel = Rombel::all();
-        return view('pasien.edit', compact('pasien', 'siswa', 'rayon', 'rombel'));
+        $obat = Obat::all();
+        return view('pasien.edit', compact('pasien', 'siswa', 'rayon', 'rombel', 'obat'));
     }
 
     /**
@@ -113,7 +129,19 @@ class PasienController extends Controller
             'suhu' => $request->suhu,
             'tensi_darah' => $request->tensi_darah,
             'keluhan' => $request->keluhan,
+            'makan_pagi' => $request->makan_pagi,
+            'makan_siang' => $request->makan_siang,
+            'makan_malam' => $request->makan_malam,
             'status_pasien' => $request->status_pasien,
+            'obat_pagi' => $request->obat_pagi,
+            'jenis_obat_pagi' => $request->jenis_obat_pagi,
+            'jumlah_obat_pagi' => $request->jumlah_obat_pagi,
+            'obat_siang' => $request->obat_siang,
+            'jenis_obat_siang' => $request->jenis_obat_siang,
+            'jumlah_obat_siang' => $request->jumlah_obat_siang,
+            'obat_malam' => $request->obat_malam,
+            'jenis_obat_malam' => $request->jenis_obat_malam,
+            'jumlah_obat_malam' => $request->jumlah_obat_malam,
         ]);
         alert()->success('Berhasil!', 'Berhasil Di Ubah')->autoClose(1000);
         return redirect('/pasien');

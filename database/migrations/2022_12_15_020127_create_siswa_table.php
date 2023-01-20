@@ -28,7 +28,7 @@ class CreateSiswaTable extends Migration
             $table->string('alergi')->nullable();
             $table->string('hobi');
             $table->string('makanan_kesukaan');
-            $table->string('catatan')->nullable();
+            $table->text('catatan')->nullable();
             $table->string('jumlah_kunjungan')->nullable();
             $table->timestamps();
         });

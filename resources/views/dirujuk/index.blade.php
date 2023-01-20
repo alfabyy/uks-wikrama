@@ -25,7 +25,7 @@
                                     <th>Nama Pasien</th>
                                     <th>Keluhan</th>
                                     <th>Status Pasien</th>
-                                    <th>Diupdate</th>
+                                    {{-- <th>Diupdate</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,7 +39,7 @@
                                             <span class="badge bg-danger"
                                                 style="color: white">{{ $row->status_pasien }}</span>
                                         </td>
-                                        <td>{{ $row->updated_at->format('d-m-y H:m:s') }}</td>
+                                        {{-- <td>{{ $row->updated_at->format('d-m-y H:m:s') }}</td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>
