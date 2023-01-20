@@ -41,7 +41,7 @@ class RayonController extends Controller
     {
         $input = $request->all();
         Rayon::create($input);
-        alert()->success('Success', 'Successfully Created')->autoClose(1000);
+        alert()->success('Berhasil!', 'Rayon Berhasil Ditambahkan')->autoClose(1000);
         return redirect('/rayon');
     }
 
@@ -84,7 +84,7 @@ class RayonController extends Controller
 
         $input = $request->all();
         $rayon->update($input);
-        alert()->success('Success', 'Successfully Updated')->autoClose(1000);
+        alert()->success('Berhasil!', 'Berhasil Di Ubah')->autoClose(1000);
         return redirect('/rayon');
     }
 
@@ -98,7 +98,7 @@ class RayonController extends Controller
     {
         $rayon = Rayon::find($id);
         $rayon->delete();
-        alert()->success('Success', 'Successfully Deleted')->autoClose(1000);
+        alert()->success('Berhasil!', 'Berhasil Menghapus Data')->autoClose(1000);
         return back();
     }
 }
