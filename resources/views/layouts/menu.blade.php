@@ -61,7 +61,7 @@
     <li class="nav-item">
         <a class="nav-link" href="/jadwal">
             <i class="fas fa-id-card"></i>
-            <span>Jadwal</span>
+            <span>Jadwal Piket</span>
         </a>
     </li>
     <li class="nav-item">
