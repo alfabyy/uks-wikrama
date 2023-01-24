@@ -59,6 +59,12 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="/jadwal">
+            <i class="fas fa-id-card"></i>
+            <span>Jadwal Piket</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="/rayon">
             <i class="fas fa-fw fa-users"></i>
             <span>Rayon</span>
@@ -68,12 +74,6 @@
         <a class="nav-link" href="/rombel">
             <i class="fas fa-id-card"></i>
             <span>Rombel</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/jadwal">
-            <i class="fas fa-id-card"></i>
-            <span>Jadwal</span>
         </a>
     </li>
     <hr class="sidebar-divider">
