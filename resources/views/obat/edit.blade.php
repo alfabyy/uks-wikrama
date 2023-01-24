@@ -111,6 +111,7 @@
             </div>
         </div>
 
+<<<<<<< HEAD
                                 </td>
                             </tr>
                             <?php } ?>
@@ -128,3 +129,6 @@
     </body>
 
     </html>
+=======
+@endsection
+>>>>>>> cc639ed90e31e70ce484a8bc599c49c6bac05488

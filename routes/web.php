@@ -14,6 +14,9 @@ use App\Http\Controllers\PasienController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\StatusController;
+
+
 
 
 /*
@@ -40,14 +43,16 @@ Route::resource('/petugas', PetugasController::class);
 Route::resource('/rekam-medis', RekamMedisController::class);
 Route::resource('/jadwal', JadwalController::class);
 
+Route::get('/rawat', [StatusController::class, 'index_rawat'])->middleware('auth');
+Route::get('/rawat-sementara', [StatusController::class, 'index_rawat_sementara'])->middleware('auth');
+Route::get('/dirujuk', [StatusController::class, 'index_dirujuk'])->middleware('auth');
+Route::get('/sembuh', [StatusController::class, 'index_sembuh'])->middleware('auth');
+Route::get('/cari-siswa', [SiswaController::class, 'search'])->name('siswa.search')->middleware('auth');
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 // Route::get('/rekam-medis', [RekamMedisController::class, 'index'])->name('rekam-medis.index');
 // Route::get('/rekam-medis/search', [RekamMedisController::class, 'search'])->name('rekam-medis.search');
 // Route::get('/rekam-medis/{id}', [RekamMedisController::class, 'detail'])->name('rekam-medis.detail');
-
-
-

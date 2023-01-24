@@ -77,17 +77,17 @@
                             <div class="form-group">
                                 <label class="form-label">Nama Rayon</label>
                                 <input type="text" name="nama_rayon" value="{{ old('nama_rayon') }}" required='required'
-                                    class="form-control">
+                                    class="form-control" placeholder="Rayon">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Pembimbing Siswa</label>
                                 <input type="text" name="nama_pembimbing" value="{{ old('nama_pembimbing') }}"
-                                    required='required' class="form-control">
+                                    required='required' class="form-control" placeholder="Pembimbing">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">No Telp</label>
                                 <input type="number" name="no_telp" value="{{ old('no_telp') }}" required='required'
-                                    class="form-control">
+                                    class="form-control" placeholder="Telp">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -96,43 +96,6 @@
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- Modal Edit --}}
-    <div class="modal fade" id="exampleModal{{ $row->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Rayon</h5>
-                </div>
-                <form action="{{ route('rayon.update', $row->id) }}" method="POST">
-
-                    @csrf
-                    @method('PUT')
-                    <div class="modal-body">
-                        <label for="" class="form-label">Nama Rayon :</label>
-                        <select name="nama_rayon" id="" class="form-control">
-                            <option value="">--PILIH--</option>
-                            <option value="AL-IKROM 1">AL-IKROM 1</option>
-                            <option value="AL-IKROM 2">AL-IKROM 2</option>
-                            <option value="AL-IKROM 3">AL-IKROM 3</option>
-                        </select>
-                        <label for="" class="form-label">Nama Pembimbing :</label>
-                        <input required type="text" class="form-control" value="{{ $row->nama_pembimbing }}"
-                            name="nama_pembimbing" placeholder="Pembimbing...">
-                        <label for="" class="form-label">No HP Pembimbing :</label>
-                        <input required type="number" class="form-control" value="{{ $row->no_telp }}" name="no_telp"
-                            placeholder="+62 8xx-xxxx-xxxx">
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Update</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
