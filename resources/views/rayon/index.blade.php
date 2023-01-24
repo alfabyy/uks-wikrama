@@ -9,7 +9,6 @@ Data Rayon
 @endsection
 
 @section('content')
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -17,7 +16,6 @@ Data Rayon
                 <div class="card-header">
 
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal" class="btn btn-success"><i class="fa fa-plus"></i> Tambah</a>
-
 
 
                 </div>
@@ -56,7 +54,6 @@ Data Rayon
             </div>
         </div>
     </div>
-
     {{-- Modal Tambah --}}
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -81,7 +78,9 @@ Data Rayon
                         <div class="form-group">
                             <label class="form-label">No Telp</label>
                             <input type="number" name="no_telp" value="{{ old('no_telp') }}" required='required' class="form-control" placeholder="Telp">
+
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-outline-primary">Tambah</button>
@@ -113,7 +112,6 @@ Data Rayon
                     <label for="" class="form-label">No HP Pembimbing :</label>
                     <input required type="number" class="form-control" value="{{ $row->no_telp }}" name="no_telp" placeholder="+62 8xx-xxxx-xxxx">
 
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -131,7 +129,6 @@ Data Rayon
                 <label class="form-label">Nama Rayon</label>
                 <input type="text" name="nama_rayon" value="{{ old('nama_rayon') }}" required='required' class="form-control">
             </div>
-
             <div class="form-group">
                 <label class="form-label">Pembimbing Siswa</label>
             </div>
@@ -139,9 +136,12 @@ Data Rayon
                 <label class="form-label">No Telp</label>
                 <input type="number" name="no_telp" value="{{ old('no_telp') }}" required='required' class="form-control">
             </div>
-        </div>
-        <div class="modal-footer">
-            <div>
-                @endforeach
-                @endsection
+            <div class="modal-footer">
 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+@endsection
